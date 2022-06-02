@@ -12,7 +12,9 @@
 # pow(3, 4) # => 81
 # pow(4, 3) # => 64
 def pow(base, exponent)
+    return 1 if exponent == 0
 
+    pow(base,exponent) 
 end
 
 
@@ -35,7 +37,10 @@ end
 # lucas_number(5)   # =>    11
 # lucas_number(9)   # =>    76
 def lucas_number(n)
-
+   return 2 if n == 0
+   
+   return 1 if n == 1
+    lucas_number(n - 1) + lucas_number(n - 2)
 end
 
 
@@ -46,14 +51,18 @@ end
 #
 # Examples:
 #
-# sum_array([])             # => 0
-# sum_array([5])            # => 5
-# sum_array([5, 2])         # => 7
-# sum_array([4, 10, -1, 2]) # => 15
+
 def sum_array(array)
+   return 0 if array.length == 0
+   return [array[array.length - 1]]
+   
 
+   sum_array([array[array.length - 1]]) + sum_array([array[array.length - 2..-1]])
 end
-
+p sum_array([])             # => 0
+p sum_array([5])            # => 5
+p sum_array([5, 2])         # => 7
+p sum_array([4, 10, -1, 2]) # => 15
 
 # Write a method, reverse_string(str), that takes in a string.
 # The method should return the string with it's characters in reverse order.
